@@ -11,7 +11,7 @@ import { Course } from '../course';
 
 export class CourseComponent implements OnInit {
 
-  private course: Course;
+  private course: Course = new Course();
   errorMessage: string;
 
      constructor(private courseService: CourseService) { }

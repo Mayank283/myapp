@@ -19,7 +19,6 @@ export class CourseService {
   //           };
 
       getCourseList(): Observable<Course> {
-        console.log("Inside Service");
       // getCourseList(): Promise<Course> {
       //   console.log(this.http.get(this.courseUrl).toPromise());
       //     return this.http.get(this.courseUrl)
@@ -38,9 +37,9 @@ export class CourseService {
 // }
 
   private extractData(res: Response) {
-    res.json();
-    let body = res.json();
-    return body.data || { };
+    return res.json();
+    //  let body = res.json();
+    //  return body.data || { };
   }
   
   private handleError (error: Response | any) {
