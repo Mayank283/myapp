@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Freecharge</h1>
+    
+    <form method = "post">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Name" id="name" name="name" [(ngModel)] = "user.name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email" id="email" name="email" [(ngModel)] = "user.email">
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" placeholder="Mobile Number" id="mobilenumber" name="mobileNo" maxlength="10" [(ngModel)] = "user.mobileNumber">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" id="password" name="password" [(ngModel)] = "user.password">
+      </div>
+      <button type="submit" class="btn btn-success" (click)=submit()>SignUp</button>
+    </form>
+    
+</div>

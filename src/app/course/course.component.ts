@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseService} from '../course.service';
-import { Course } from '../course';
+import {CourseService} from './course.service';
+import { Course } from './course';
 
 @Component({
   selector: 'app-course',
@@ -11,10 +11,11 @@ import { Course } from '../course';
 
 export class CourseComponent implements OnInit {
 
-  private course: Course = new Course();
+  //private course: Course = new Course();
+  private course: Map<string,string> = new Map;
   errorMessage: string;
 
-     constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService) { }
 
   ngOnInit() {
     this.getCourseList();

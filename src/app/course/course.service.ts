@@ -3,8 +3,8 @@ import { Http,Response,Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {Course} from './course'
 import 'rxjs/add/operator/toPromise';
+import { Course } from './course';
 
 @Injectable()
 export class CourseService {
@@ -18,7 +18,7 @@ export class CourseService {
   //             courseName: "SpringBoot"
   //           };
 
-      getCourseList(): Observable<Course> {
+      getCourseList(): Observable<Map<string,string>> {
       // getCourseList(): Promise<Course> {
       //   console.log(this.http.get(this.courseUrl).toPromise());
       //     return this.http.get(this.courseUrl)
@@ -37,6 +37,7 @@ export class CourseService {
 // }
 
   private extractData(res: Response) {
+    console.log(res.json());
     return res.json();
     //  let body = res.json();
     //  return body.data || { };
