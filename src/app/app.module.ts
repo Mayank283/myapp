@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import { SyllabusComponent } from './syllabus/syllabus.component';
 import { SignupComponent } from './signup/signup.component';
+import { MyPipePipe } from './my-pipe.pipe';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   /**imports is for Module*/
@@ -25,7 +27,9 @@ import { SignupComponent } from './signup/signup.component';
     AppComponent,
     CourseComponent,
     SyllabusComponent,
-    SignupComponent
+    SignupComponent,
+    MyPipePipe,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

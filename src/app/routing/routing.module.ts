@@ -7,12 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CourseComponent } from '../course/course.component';
 import { SyllabusComponent } from '../syllabus/syllabus.component';
 import { SignupComponent } from '../signup/signup.component';
+import { LoginComponent } from '../login/login.component';
 
 const appRoutes: Routes = [
   { path: 'course', component: CourseComponent },
   { path: 'syllabus', component: SyllabusComponent },
   { path: 'signup', component: SignupComponent },
-  { path: '', redirectTo: '/signup', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
