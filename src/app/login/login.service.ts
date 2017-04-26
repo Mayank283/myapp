@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Response, Headers } from '@angular/http';
+import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -14,17 +14,22 @@ export class LoginService {
   private loginUrl = 'http://localhost:8080/login';
 
   constructor(private http: Http,
-              private _md5: Md5) { }
+    private _md5: Md5) { }
 
-  login(user: User): Observable<any> {
-    let username: string = user.username;
+  login(user: User): Observable<User> {
+    //let urlSearchParams = new URLSearchParams();
+    //urlSearchParams.append('username', user.username);
+    //urlSearchParams.append('password', user.password);
+    let body = user.username;
+    // let username: string = user.username;
     let password: string = user.password;
+    let e: string = Md5.hashStr(password).toString();
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append("Authorization", "Basic " + btoa(username + ":" + password));
-    let e = Md5.hashStr(password);
-    console.log(e);
+    // headers.append("Authorization", "Basic " + btoa(username + ":" + password));
+    headers.append("Authorization", e);
+    // headers.append("From",username);
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.loginUrl,options)
+    return this.http.post(this.loginUrl, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
