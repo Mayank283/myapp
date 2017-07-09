@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http,Response,Headers } from '@angular/http';
+import { Http,RequestOptions,Response,Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -9,7 +9,7 @@ import { Course } from './course';
 @Injectable()
 export class CourseService {
   
-  private courseUrl = 'http://localhost:8080/course/list';
+  private courseUrl = 'http://localhost:8090/auth/course/list';
 
   constructor(private http: Http) { }
 
@@ -25,8 +25,10 @@ export class CourseService {
       //     .toPromise()
       //     .then(Response => Response.json().data as Course)
       //     .catch(this.handleError);
-
-      return this.http.get(this.courseUrl)
+      let headers = new Headers({'Authorization': localStorage.getItem("auth-token")});
+      //let headers = new Headers({ 'Accept': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.get(this.courseUrl,options)
                     .map(this.extractData)
                     .catch(this.handleError);
 }
@@ -37,7 +39,6 @@ export class CourseService {
 // }
 
   private extractData(res: Response) {
-    console.log(res.json());
     return res.json();
     //  let body = res.json();
     //  return body.data || { };

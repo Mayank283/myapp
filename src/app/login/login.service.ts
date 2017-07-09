@@ -16,18 +16,23 @@ export class LoginService {
   constructor(private http: Http,
     private _md5: Md5) { }
 
-  login(user: User): Observable<User> {
+  login(user: User): Observable<Response> {
     //let urlSearchParams = new URLSearchParams();
     //urlSearchParams.append('username', user.username);
     //urlSearchParams.append('password', user.password);
+    
     let body = user.username;
+    
     // let username: string = user.username;
+    
     let password: string = user.password;
     let e: string = Md5.hashStr(password).toString();
+    
     let headers = new Headers({ 'Content-Type': 'application/json' });
     // headers.append("Authorization", "Basic " + btoa(username + ":" + password));
     headers.append("Authorization", e);
     // headers.append("From",username);
+    
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.loginUrl, body, options)
       .map(this.extractData)
@@ -35,6 +40,7 @@ export class LoginService {
   }
 
   private extractData(res: Response) {
+    localStorage.setItem("auth-token",res.json().token);
     return res.json();
   }
 

@@ -18,7 +18,7 @@ export class LoginComponent {
 
   login() {
     this.loginService.login(this.user).subscribe(
-      any =>  console.log(any),
+      response => console.log(response),
       error => this.errorMessage = <any>error);
   }
 }
