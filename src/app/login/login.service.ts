@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response, Headers, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import {environment} from '../../environments/environment';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Md5 } from 'ts-md5/dist/md5';
@@ -11,7 +12,8 @@ import { User } from '../signup/user';
 @Injectable()
 export class LoginService {
 
-  private loginUrl = 'http://localhost:8090/login';
+  apiUrl = environment.apiUrl;
+  private loginUrl = this.apiUrl+'/login';
 
   constructor(private http: Http,
     private _md5: Md5) { }

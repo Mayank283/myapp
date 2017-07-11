@@ -5,11 +5,14 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Course } from './course';
+import { environment} from '../../environments/environment'
 
 @Injectable()
 export class CourseService {
   
-  private courseUrl = 'http://localhost:8090/auth/course/list';
+  apiUrl = environment.apiUrl;
+  
+  private courseUrl = this.apiUrl + '/auth/course/list';
 
   constructor(private http: Http) { }
 

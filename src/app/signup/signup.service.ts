@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http,RequestOptions,Response,Headers } from '@angular/http';
+import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -10,7 +11,8 @@ import {User} from './user';
 @Injectable()
 export class SignupService {
 
-  private signupUrl = 'http://localhost:8080/signup';
+  apiUrl = environment.apiUrl;
+  private signupUrl = this.apiUrl+'/signup';
   
   constructor(private http: Http) { }
 
