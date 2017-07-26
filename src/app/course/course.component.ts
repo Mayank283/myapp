@@ -8,27 +8,32 @@ import { Course } from './course';
   styleUrls: ['./course.component.css'],
   providers: [CourseService]
 })
-
-export class CourseComponent implements OnInit {
+export class CourseComponent implements OnInit{
 
   //private course: Course = new Course();
-  private course: Map<string,string> = new Map;
+  private courses = new Map();
   errorMessage: string;
 
   constructor(private courseService: CourseService) { }
+   
+  ngOnInit() {
+  this.getCourseList()
+}
 
-   ngOnInit() {
-      this.getCourseList();
-   }
-
-  getCourseList(){
+   getCourseList(){
     this.courseService.getCourseList()
                       // .then(
                       //         Course => this.course = Course,
                       //         error =>  this.errorMessage = <any>error);
                       .subscribe(
-                       course => this.course = course,
-                       error =>  this.errorMessage = <any>error
+                       data => this.objToMap(data),
+                       error => this.errorMessage = <any>error
                        );
+  }
+   
+  objToMap(data : any){
+     for(var key in data){
+        this.courses.set(key,data[key]);
+     }
   }
 }

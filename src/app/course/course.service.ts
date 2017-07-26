@@ -21,7 +21,7 @@ export class CourseService {
   //             courseName: "SpringBoot"
   //           };
 
-      getCourseList(): Observable<Map<string,string>> {
+      getCourseList(): Observable<any> {
       // getCourseList(): Promise<Course> {
       //   console.log(this.http.get(this.courseUrl).toPromise());
       //     return this.http.get(this.courseUrl)

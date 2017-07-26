@@ -13,12 +13,11 @@ export class LoginComponent {
 
   user: User = new User();
   errorMessage: string;
-
-  constructor(private loginService: LoginService) { }
-
+  constructor(private loginService: LoginService) { 
+  }
   login() {
     this.loginService.login(this.user).subscribe(
-      response => console.log(response),
+      response => {},
       error => this.errorMessage = <any>error);
   }
 }

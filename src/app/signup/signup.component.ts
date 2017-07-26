@@ -13,7 +13,6 @@ export class SignupComponent {
   user : User = new User();
   errorMessage: string;
   constructor(private signupService:SignupService) { }
- 
   submit(){
     this.signupService.submit(this.user)
                       .subscribe(
