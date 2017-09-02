@@ -11,7 +11,7 @@ import { Course } from './course';
 export class CourseComponent implements OnInit{
 
   //private course: Course = new Course();
-  private courses = new Map();
+  courses = new Map();
   errorMessage: string;
 
   constructor(private courseService: CourseService) { }
